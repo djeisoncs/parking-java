@@ -285,5 +285,17 @@ public class ConexaoService implements IConexaoBancoService {
 					NegocioExceptionEnum.ARQUIVO_BD_INACESSIVEL.getMensagem(""));
 		}
 	}
+	
+	public void gravarArquivoTeste(String caminho, String nome) {
+		try {
+			ConexaoBanco conexaoBanco = new ConexaoBanco();
+			conexaoBanco.setIdConexao("10");
+			conexaoBanco.setSenha("Teste");
+			JsonDadosUtil.gravarArquivoJson(conexaoBanco.toString(), caminho, nome);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	} 
 
 }

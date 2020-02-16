@@ -4,6 +4,11 @@
 package com.dcs.parking.configuracao;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -21,9 +26,13 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.dcs.parking.entidades.Conexao;
 import com.dcs.parking.entidades.ConexaoBanco;
 import com.dcs.parking.services.ConexaoService;
 import com.dcs.parking.util.Constantes;
+import com.dcs.parking.util.JsonDadosUtil;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
 /**
@@ -85,8 +94,9 @@ public class DataBaseConfig {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		ConexaoBanco conexaoDados = new ConexaoBanco();
+		Path path = Paths.get(".");
 		try {
-			conexaoDados = conexaoService.montarObjeto(Constantes.CAMINHO_PASTA_RAIZ, Constantes.ARQUIVO_CONF_BANCO,
+			conexaoDados = conexaoService.montarObjeto(path.toAbsolutePath().toString().toString().replaceAll(".", ""), Constantes.ARQUIVO_CONF_BANCO,
 					"D");
 		} catch (JsonSyntaxException e) {
 			e.printStackTrace();

@@ -167,4 +167,19 @@ public class ConexaoBanco implements Serializable {
 		this.tipo = tipo;
 	}
 
+	/**
+	 * Método responsável por 
+	 * @author Djeison
+	 * 16 de fev de 2020
+	 * @return
+	 */
+	@Override
+	public String toString() {
+		return "ConexaoBanco [idConexao=" + idConexao + ", usuario=" + usuario + ", senha=" + senha + ", driver="
+				+ driver + ", url=" + url + ", urlFinal=" + urlFinal + ", porta=" + porta + ", servidor=" + servidor
+				+ ", dataBase=" + dataBase + ", tipo=" + tipo + "]";
+	}
+	
+	
+
 }

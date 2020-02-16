@@ -11,5 +11,6 @@ package com.dcs.parking.util;
 public class Constantes {
 
 	public static String CAMINHO_PASTA_RAIZ = "c:/parking/";
+	//public static String ARQUIVO_CONF_BANCO = "base-dados/configDb.json";
 	public static String ARQUIVO_CONF_BANCO = "configDb.json";
 }
